@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Popdown Gravity</title>
+	</head>
+	<body>
+		<script>
+			let velocity = [0, 0];
+			function update() {
+				if (screenTop > screen.height - 400) {
+					// moveTo(screenLeft, screen.height - 400);
+					if (velocity[1] > 0) {
+						velocity[1] = -velocity[1] / 2;
+					}
+				} else {
+					velocity[1]++;
+				}
+				moveBy(velocity[0], velocity[1] - 37);
+				velocity[0] /= 1.1;
+				requestAnimationFrame(update);
+			}
+			requestAnimationFrame(update);
+			setInterval(() => {
+				velocity = [Math.random() * 50 - 25, -Math.random() * 50];
+			}, 1000);
+		</script>
+	</body>
+</html>
